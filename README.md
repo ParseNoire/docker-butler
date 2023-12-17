@@ -8,7 +8,7 @@ Repository for building minimal Docker images with [`butler`](https://itch.io/do
 docker run \
   -v ./build:/build \
   -e BUTLER_API_KEY=<YOUR API KEY> \
-  ghcr.io/parsenoire/butler butler push ~/build <USER>/<PROJECT>:<CHANNEL>
+  ghcr.io/parsenoire/butler butler push /build <USER>/<PROJECT>:<CHANNEL>
 ```
 
 Mount the path to your build output (e.g. `./build`) to a known folder in the container (e.g. `/build`).
