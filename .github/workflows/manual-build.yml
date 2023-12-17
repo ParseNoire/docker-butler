@@ -1,0 +1,29 @@
+name: "Manual build"
+
+on:
+  workflow_dispatch:
+    inputs:
+      butler_version:
+        description: Butler version
+        type: string
+        required: true
+        default: "15.21.0"
+
+env:
+  IMAGE_NAME: butler
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ inputs.butler_version }}
+          build-args: BUTLER_VERSION=${{ inputs.butler_version }}
