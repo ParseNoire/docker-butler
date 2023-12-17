@@ -6,12 +6,12 @@ Repository for building minimal Docker images with [`butler`](https://itch.io/do
 
 ```shell
 docker run \
-  -v ./build:~/build \
+  -v ./build:/build \
   -e BUTLER_API_KEY=<YOUR API KEY> \
   ghcr.io/parsenoire/butler butler push ~/build <USER>/<PROJECT>:<CHANNEL>
 ```
 
-Mount the path to your build output (e.g. `./build`) to a known folder in the container (e.g. `~/build`).
+Mount the path to your build output (e.g. `./build`) to a known folder in the container (e.g. `/build`).
 
 Set your butler API key through the [`BUTLER_API_KEY` environment variable](https://itch.io/docs/butler/login.html#running-butler-from-ci-builds-travis-ci-gitlab-ci-etc). You can generate an API key from your [itch.io API keys settings](https://itch.io/user/settings/api-keys).
 
