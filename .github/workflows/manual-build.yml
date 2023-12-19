@@ -33,6 +33,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ env.IMAGE_OWNER }}/${{ env.IMAGE_NAME }}:${{ inputs.butler_version }}
+            ghcr.io/${{ env.IMAGE_OWNER }}/${{ github.repository.name }}:${{ inputs.butler_version }}
             ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:${{ inputs.butler_version }}
           build-args: BUTLER_VERSION=${{ inputs.butler_version }}
